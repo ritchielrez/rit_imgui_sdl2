@@ -15,11 +15,7 @@ int main(int argc, char **argv)
 
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
-#ifdef WIN32
-    io.Fonts->AddFontFromFileTTF("..\\..\\CascadiaCode.ttf", 18.0f);
-#else
-    io.Fonts->AddFontFromFileTTF("../../CascadiaCode.ttf", 18.0f);
-#endif
+    io.Fonts->AddFontFromFileTTF("CascadiaCode.ttf", 18.0f);
 
     SDL_Window *window = SDL_CreateWindow("Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
