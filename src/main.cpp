@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-int main(int argc, char **argv) 
+int main(int argc, char **argv)
 {
     if (SDL_Init(SDL_INIT_VIDEO))
     {
@@ -11,14 +11,23 @@ int main(int argc, char **argv)
     }
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    auto& io = ImGui::GetIO();
+    auto &io = ImGui::GetIO();
 
     io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
-    io.Fonts->AddFontFromFileTTF("CascadiaCode.ttf", 18.0f);
+    io.ConfigDockingWithShift = true;
 
-    SDL_Window *window = SDL_CreateWindow("Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    io.Fonts->AddFontFromFileTTF("..\\CascadiaCode.ttf", 18.0f);
+
+    SDL_Window *window =
+        SDL_CreateWindow("Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1280, 720, SDL_WINDOW_SHOWN);
+    SDL_Renderer *renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+
+    // No tabbars on the top
+    ImGuiWindowClass window_class;
+    window_class.DockNodeFlagsOverrideSet = 1 << 12;
 
     ImGui_ImplSDL2_InitForSDLRenderer(window, renderer);
     ImGui_ImplSDLRenderer2_Init(renderer);
@@ -35,19 +44,18 @@ int main(int argc, char **argv)
             ImGui_ImplSDL2_ProcessEvent(&event);
             if (event.type == SDL_QUIT)
                 running = false;
-                break;
+            break;
         }
 
         ImGui_ImplSDL2_NewFrame();
         ImGui_ImplSDLRenderer2_NewFrame();
         ImGui::NewFrame();
-        
-        if (somePanel)
-        {
-            ImGui::Begin("Some panel", &somePanel);
-            ImGui::Text("Test");
-            ImGui::End();
-        }
+        ImGui::DockSpaceOverViewport();
+
+        ImGui::SetNextWindowClass(&window_class);
+        ImGui::Begin("Some panel", NULL, ImGuiWindowFlags_NoCollapse);
+        ImGui::Text("Test");
+        ImGui::End();
 
         ImGui::Render();
         SDL_RenderSetScale(renderer, io.DisplayFramebufferScale.x, io.DisplayFramebufferScale.y);
@@ -64,5 +72,5 @@ int main(int argc, char **argv)
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
 
-	return 0;
+    return 0;
 }
