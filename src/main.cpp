@@ -4,7 +4,6 @@
 
 int main(int argc, char **argv)
 {
-
     imgui_sdl2::Application app("Window", 1280, 720);
 
     bool running = true;

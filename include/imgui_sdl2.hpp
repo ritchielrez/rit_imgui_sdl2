@@ -10,15 +10,15 @@ namespace imgui_sdl2
 {
 class Application
 {
-  private:
-    SDL_Window *mWindow{NULL};
-    SDL_Renderer *mRenderer{NULL};
-
   public:
     Application(const char *title, const int width, const int height);
     ~Application();
 
     void render();
     void update();
+
+  private:
+    SDL_Window *mWindow{NULL};
+    SDL_Renderer *mRenderer{NULL};
 };
 }; // namespace imgui_sdl2
