@@ -1,10 +1,12 @@
+#include "imgui_sdl2.hpp"
+
 #include <SDL2/SDL.h>
 
 #include <imgui.h>
 #include <imgui_impl_sdl2.h>
 #include <imgui_impl_sdlrenderer2.h>
 
-#include "imgui_sdl2.hpp"
+#include <iostream>
 
 namespace imgui_sdl2
 {
@@ -12,7 +14,7 @@ namespace imgui_sdl2
     {
         if (SDL_Init(SDL_INIT_VIDEO))
         {
-            fprintf(stderr, "SDL Video initilization failed, %s\n", SDL_GetError());
+            std::cerr << "SDL Video initilization failed, " << SDL_GetError() << "\n";
             return;
         }
 
@@ -40,12 +42,13 @@ namespace imgui_sdl2
         if(!mWindow)
         {
             fprintf(stderr, "Window initilization failed, %s\n", SDL_GetError());
+            std::cerr << "Windows initilization failed, " << SDL_GetError() << "\n";
             return;
         }
 
         if(!mRenderer)
         {
-            fprintf(stderr, "Renderer initilization failed, %s\n", SDL_GetError());
+            std::cerr << "Renderer initilization failed, " << SDL_GetError() << "\n";
             return;
         }
 
