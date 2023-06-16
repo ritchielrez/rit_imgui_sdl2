@@ -12,3 +12,6 @@ build
 
 # Doxygen related stuffs
 docs/doxygen/build
+
+# Vcpkg related stuffs
+vcpkg_installed
