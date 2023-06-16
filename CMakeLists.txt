@@ -5,9 +5,9 @@ set(CXX_STANDARD_REQUIRED ON)
 set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake"
     CACHE STRING "Vcpkg toolchain file")
 
-project(imgui_sdl2 VERSION 1.0)
+project(rit-imgui-sdl2 VERSION 1.0)
 
-add_executable(main src/main.cpp src/imgui_sdl2.cpp)
+add_executable(main src/main.cpp src/rit_imgui_sdl2.cpp)
 
 find_package(imgui CONFIG REQUIRED)
 find_package(SDL2_image CONFIG REQUIRED)

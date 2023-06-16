@@ -1,4 +1,4 @@
-#include "imgui_sdl2.hpp"
+#include "rit_imgui_sdl2.hpp"
 
 #include <SDL2/SDL.h>
 
