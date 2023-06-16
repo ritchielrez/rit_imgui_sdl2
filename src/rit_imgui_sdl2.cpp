@@ -1,10 +1,10 @@
 #include "rit_imgui_sdl2.hpp"
 
-#include <SDL2/SDL.h>
+#include "SDL2/SDL.h"
 
-#include <imgui.h>
-#include <imgui_impl_sdl2.h>
-#include <imgui_impl_sdlrenderer2.h>
+#include "imgui.h"
+#include "imgui_impl_sdl2.h"
+#include "imgui_impl_sdlrenderer2.h"
 
 #include <iostream>
 
