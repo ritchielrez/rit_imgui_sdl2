@@ -7,8 +7,8 @@ set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems
 
 project(rit-imgui-sdl2 VERSION 1.0)
 
-include(cmake/StandardProjectSettings.cmake)
 include(cmake/CompilerWarnings.cmake)
+include(cmake/StandardProjectSettings.cmake)
 
 add_executable(main src/main.cpp src/rit_imgui_sdl2.cpp)
 

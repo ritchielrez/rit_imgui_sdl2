@@ -6,7 +6,7 @@ int main(int argc, char **argv)
 {
     imgui_sdl2::Application app("Window", 1280, 720);
 
-    bool running = true;
+    bool running{true};
     SDL_Event event;
 
     while (running)
