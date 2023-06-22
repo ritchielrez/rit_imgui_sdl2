@@ -9,8 +9,9 @@ project(rit-imgui-sdl2 VERSION 1.0)
 
 include(cmake/CompilerWarnings.cmake)
 include(cmake/StandardProjectSettings.cmake)
+include(cmake/StaticAnalyzers.cmake)
 
-add_executable(main src/main.cpp src/rit_imgui_sdl2.cpp)
+add_executable(main src/main.cpp src/rit_imgui_sdl2.cpp include/rit_imgui_sdl2.hpp)
 
 find_package(imgui CONFIG REQUIRED)
 find_package(SDL2_image CONFIG REQUIRED)
