@@ -4,6 +4,7 @@ set(CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake"
     CACHE STRING "Vcpkg toolchain file")
+set(WARNINGS_AS_ERRORS TRUE)
 
 project(rit-imgui-sdl2 VERSION 1.0)
 
