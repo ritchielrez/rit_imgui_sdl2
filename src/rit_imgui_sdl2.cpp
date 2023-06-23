@@ -10,7 +10,7 @@
 
 namespace imgui_sdl2
 {
-Application::Application(const char *title, const int width, const int height)
+Application::Application(const char *title, const int width, const int height) : mWindow(nullptr)
 {
     if (SDL_Init(SDL_INIT_VIDEO))
     {
@@ -37,7 +37,7 @@ Application::Application(const char *title, const int width, const int height)
 
     mWindow =
         SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
-    mRenderer = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED);
+    sRenderer_ = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED);
 
     if (!mWindow)
     {
@@ -46,14 +46,14 @@ Application::Application(const char *title, const int width, const int height)
         return;
     }
 
-    if (!mRenderer)
+    if (!sRenderer_)
     {
         std::cerr << "Renderer initilization failed, " << SDL_GetError() << "\n";
         return;
     }
 
-    ImGui_ImplSDL2_InitForSDLRenderer(mWindow, mRenderer);
-    ImGui_ImplSDLRenderer2_Init(mRenderer);
+    ImGui_ImplSDL2_InitForSDLRenderer(mWindow, sRenderer_);
+    ImGui_ImplSDLRenderer2_Init(sRenderer_);
 }
 
 void Application::update()
@@ -68,9 +68,9 @@ void Application::update()
 void Application::render()
 {
     ImGui::Render();
-    SDL_RenderClear(mRenderer);
+    SDL_RenderClear(sRenderer_);
     ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
-    SDL_RenderPresent(mRenderer);
+    SDL_RenderPresent(sRenderer_);
 }
 
 Application::~Application()
@@ -81,7 +81,7 @@ Application::~Application()
     ImGui::DestroyContext();
 
     SDL_DestroyWindow(mWindow);
-    SDL_DestroyRenderer(mRenderer);
+    SDL_DestroyRenderer(sRenderer_);
     SDL_Quit();
 }
 }; // namespace imgui_sdl2
