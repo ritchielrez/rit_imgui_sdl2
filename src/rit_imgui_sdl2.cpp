@@ -10,7 +10,7 @@
 
 namespace imgui_sdl2
 {
-Application::Application(const char *title, const int width, const int height) : mWindow(nullptr)
+Application::Application(const char *title, const int width, const int height)
 {
     if (SDL_Init(SDL_INIT_VIDEO))
     {

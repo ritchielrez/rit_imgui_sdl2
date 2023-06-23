@@ -11,7 +11,7 @@ namespace imgui_sdl2
 class Application
 {
   private:
-    SDL_Window *mWindow;
+    SDL_Window *mWindow{nullptr};
     inline static SDL_Renderer *sRenderer_{nullptr};
 
   public:
