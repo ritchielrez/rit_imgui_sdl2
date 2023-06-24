@@ -23,9 +23,9 @@ Application::Application(const char *title, const int width, const int height)
     auto &io = ImGui::GetIO();
 
     // Enable keyboard navigation, docking and multiple viewports in imgui
-    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
-    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-    io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
+    imguiIO.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // NOLINT
+    imguiIO.ConfigFlags |= ImGuiConfigFlags_DockingEnable; // NOLINT
+    imguiIO.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; // NOLINT
 
     io.ConfigDockingWithShift = true;
 
