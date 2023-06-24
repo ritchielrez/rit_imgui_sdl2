@@ -15,12 +15,18 @@ class Application
     inline static SDL_Renderer *sRenderer_{nullptr};
 
   public:
-    Application(const char *title, const int width, const int height);
+    Application(const Application &) = default;
+    Application(Application &&) = delete;
+    Application &operator=(const Application &) = delete;
+    Application &operator=(Application &&) = delete;
+    Application(const char *title, int width, int height);
     ~Application();
 
     static void render();
     static void update();
 
     inline static SDL_Renderer *&sRenderer = sRenderer_;
+
+    float fontSize = 18.0F;
 };
 }; // namespace imgui_sdl2

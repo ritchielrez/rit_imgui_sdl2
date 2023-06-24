@@ -12,7 +12,7 @@ namespace imgui_sdl2
 {
 Application::Application(const char *title, const int width, const int height)
 {
-    if (SDL_Init(SDL_INIT_VIDEO))
+    if (SDL_Init(SDL_INIT_VIDEO) != 0)
     {
         std::cerr << "SDL Video initilization failed, " << SDL_GetError() << "\n";
         return;
@@ -20,16 +20,16 @@ Application::Application(const char *title, const int width, const int height)
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    auto &io = ImGui::GetIO();
+    auto &imguiIO = ImGui::GetIO();
 
     // Enable keyboard navigation, docking and multiple viewports in imgui
     imguiIO.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard; // NOLINT
     imguiIO.ConfigFlags |= ImGuiConfigFlags_DockingEnable; // NOLINT
     imguiIO.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable; // NOLINT
 
-    io.ConfigDockingWithShift = true;
+    imguiIO.ConfigDockingWithShift = true;
 
-    io.Fonts->AddFontFromFileTTF("CascadiaCode.ttf", 18.0f);
+    imguiIO.Fonts->AddFontFromFileTTF("CascadiaCode.ttf", fontSize);
 
     // No tabbars on the top
     // ImGuiWindowClass window_class;
@@ -39,13 +39,13 @@ Application::Application(const char *title, const int width, const int height)
         SDL_CreateWindow(title, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
     sRenderer_ = SDL_CreateRenderer(mWindow, -1, SDL_RENDERER_ACCELERATED);
 
-    if (!mWindow)
+    if (mWindow == nullptr)
     {
         std::cerr << "Windows initilization failed, " << SDL_GetError() << "\n";
         return;
     }
 
-    if (!sRenderer_)
+    if (sRenderer_ == nullptr)
     {
         std::cerr << "Renderer initilization failed, " << SDL_GetError() << "\n";
         return;

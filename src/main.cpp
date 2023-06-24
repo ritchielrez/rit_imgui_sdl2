@@ -2,35 +2,39 @@
 
 #include <iostream>
 
-int main(int argc, char **argv)
+int main(int /*argc*/, char **/*argv*/)
 {
-    imgui_sdl2::Application app("Window", 1280, 720);
+    const int width = 1280;
+    const int height = 720;
+    imgui_sdl2::Application app("Window", width, height);
 
     bool running{true};
     SDL_Event event;
 
     while (running)
     {
-        while (SDL_PollEvent(&event))
+        while (SDL_PollEvent(&event) != 0)
         {
             ImGui_ImplSDL2_ProcessEvent(&event);
             if (event.type == SDL_QUIT)
+            {
                 running = false;
+            }
             break;
         }
 
-        app.update();
+        imgui_sdl2::Application::update();
 
         // Create a panel with specific window configuration
         // ImGui::SetNextWindowClass(&window_class);
 
-        ImGui::Begin("Some panel", NULL, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar);
+        ImGui::Begin("Some panel", nullptr, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoTitleBar);
         ImGui::Text("Hello World");
         ImGui::End();
 
         ImGui::ShowMetricsWindow();
 
-        app.render();
+        imgui_sdl2::Application::render();
     }
 
     return 0;
