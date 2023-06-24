@@ -41,7 +41,6 @@ Application::Application(const char *title, const int width, const int height)
 
     if (!mWindow)
     {
-        fprintf(stderr, "Window initilization failed, %s\n", SDL_GetError());
         std::cerr << "Windows initilization failed, " << SDL_GetError() << "\n";
         return;
     }
