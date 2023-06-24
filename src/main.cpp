@@ -9,7 +9,7 @@ int main(int /*argc*/, char **/*argv*/)
     const imgui_sdl2::Application app("Window", width, height);
 
     bool running{true};
-    SDL_Event event = 0;
+    SDL_Event event;
 
     while (running)
     {
