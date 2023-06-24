@@ -1,0 +1,6 @@
+Diagnostics:
+  ClangTidy:
+    Add: modernize*
+    Remove: modernize-use-trailing-return-type
+  CheckOptions:
+    readability-identifier-naming.VariableCase: CamelCase
