@@ -6,7 +6,7 @@ int main(int /*argc*/, char **/*argv*/)
 {
     const int width = 1280;
     const int height = 720;
-    imgui_sdl2::Application app("Window", width, height);
+    const imgui_sdl2::Application app("Window", width, height);
 
     bool running{true};
     SDL_Event event = 0;
