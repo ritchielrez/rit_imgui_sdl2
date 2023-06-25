@@ -6,27 +6,19 @@
 #include "imgui_impl_sdl2.h"
 #include "imgui_impl_sdlrenderer2.h"
 
-namespace imgui_sdl2
+namespace rit_imgui_sdl2_app
 {
-class Application
-{
-  private:
-    SDL_Window *mWindow{nullptr};
-    inline static SDL_Renderer *sRenderer_{nullptr};
 
-  public:
-    Application(const Application &) = default;
-    Application(Application &&) = delete;
-    Application &operator=(const Application &) = delete;
-    Application &operator=(Application &&) = delete;
-    Application(const char *title, int width, int height);
-    ~Application();
+extern SDL_Window *window;
+extern SDL_Renderer *renderer;
 
-    static void render();
-    static void update();
+const float font_size = 18.0F;
 
-    inline static SDL_Renderer *&sRenderer = sRenderer_;
+void init(const char *title, const int width, const int height);
 
-    float fontSize = 18.0F;
-};
-}; // namespace imgui_sdl2
+void render();
+void update();
+
+void exit();
+
+}; // namespace rit_imgui_sdl2_app

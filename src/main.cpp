@@ -2,11 +2,12 @@
 
 #include <iostream>
 
-int main(int /*argc*/, char **/*argv*/)
+int main(int /*argc*/, char ** /*argv*/)
 {
     const int width = 1280;
     const int height = 720;
-    const imgui_sdl2::Application app("Window", width, height);
+
+    rit_imgui_sdl2_app::init("Window", width, height);
 
     bool running{true};
     SDL_Event event;
@@ -23,7 +24,7 @@ int main(int /*argc*/, char **/*argv*/)
             break;
         }
 
-        imgui_sdl2::Application::update();
+        rit_imgui_sdl2_app::update();
 
         // Create a panel with specific window configuration
         // ImGui::SetNextWindowClass(&window_class);
@@ -34,7 +35,7 @@ int main(int /*argc*/, char **/*argv*/)
 
         ImGui::ShowMetricsWindow();
 
-        imgui_sdl2::Application::render();
+        rit_imgui_sdl2_app::render();
     }
 
     return 0;
