@@ -9,9 +9,6 @@
 namespace rit_imgui_sdl2_app
 {
 
-extern SDL_Window *window;
-extern SDL_Renderer *renderer;
-
 const float font_size = 18.0F;
 
 void init(const char *title, const int width, const int height);

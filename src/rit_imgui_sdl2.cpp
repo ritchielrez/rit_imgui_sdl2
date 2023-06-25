@@ -10,6 +10,11 @@
 
 SDL_Window *rit_imgui_sdl2_app::window{nullptr};
 SDL_Renderer *rit_imgui_sdl2_app::renderer{nullptr};
+namespace
+{
+SDL_Window *window{nullptr};
+SDL_Renderer *renderer{nullptr};
+}; // namespace
 
 void rit_imgui_sdl2_app::init(const char *title, const int width, const int height)
 {
