@@ -38,5 +38,7 @@ int main(int /*argc*/, char ** /*argv*/)
         rit_imgui_sdl2_app::render();
     }
 
+    rit_imgui_sdl2_app::exit();
+
     return 0;
 }
