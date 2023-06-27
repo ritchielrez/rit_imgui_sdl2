@@ -11,11 +11,11 @@
 namespace rit_imgui_sdl2_app
 {
 
-namespace
-{
+// namespace
+// {
 SDL_Window *window{nullptr};
 SDL_Renderer *renderer{nullptr};
-}; // namespace
+// }; // namespace
 
 void init(const char *title, const int width, const int height)
 {
