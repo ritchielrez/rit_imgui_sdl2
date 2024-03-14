@@ -15,3 +15,6 @@ docs/doxygen/build
 
 # Vcpkg related stuffs
 vcpkg_installed
+
+# imgui configuration
+imgui.ini
