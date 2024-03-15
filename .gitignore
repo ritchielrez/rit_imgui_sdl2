@@ -18,3 +18,5 @@ vcpkg_installed
 
 # imgui configuration
 imgui.ini
+
+vendor/SDL2.30
