@@ -1,6 +1,9 @@
 if(NOT MSVC)
+	set(SDL2_LIB_DIR "${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL2.30/lib")
 	link_directories(${SDL2_LIB_DIR})
 endif()
+
+set(SDL2_LIBRARIES "${CMAKE_CURRENT_SOURCE_DIR}/vendor/SDL2.30/bin")
 
 file(GLOB PROJECT_DEPS ${SDL2_LIBRARIES}/*.dll)
 
