@@ -24,6 +24,8 @@ add_executable(main src/main.cpp src/rit_imgui_sdl2.cpp include/rit_imgui_sdl2.h
 
 target_include_directories(main PRIVATE "include/")
 target_include_directories(main PRIVATE "vendor/")
+target_include_directories(main PRIVATE "vendor/SDL2.30/include/")
+target_include_directories(main PRIVATE "vendor/SDL2.30/include/SDL2/")
 
 target_link_libraries(main PRIVATE SDL2main SDL2)
 
