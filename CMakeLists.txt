@@ -2,36 +2,15 @@ cmake_minimum_required(VERSION 3.10)
 set(CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED ON)
 
-project(rit-imgui-sdl2 VERSION 1.0)
+project(rit-imgui-sdl2 LANGUAGES CXX)
 
-include(cmake/CompilerWarnings.cmake)
-include(cmake/StandardProjectSettings.cmake)
-include(cmake/StaticAnalyzers.cmake)
+add_subdirectory(vendor)
+add_executable(${PROJECT_NAME} src/main.cpp src/rit_imgui_sdl2.cpp)
 
-if(WIN32)
-	include(cmake/SDL2Windows.cmake)
+if(CMAKE_BUILD_TYPE MATCHES "Debug")
+  target_compile_options(${PROJECT_NAME} PRIVATE -fsanitize=address)
+  target_link_libraries(${PROJECT_NAME} PRIVATE -fsanitize=address) # Links address sanitizer runtime
 endif()
 
-add_executable(main src/main.cpp src/rit_imgui_sdl2.cpp include/rit_imgui_sdl2.hpp 
-  vendor/imgui.cpp
-  vendor/imgui_demo.cpp
-  vendor/imgui_draw.cpp
-  vendor/imgui_tables.cpp
-  vendor/imgui_widgets.cpp
-  vendor/imgui_impl_sdl2.cpp
-  vendor/imgui_impl_sdlrenderer2.cpp
-)
-
-target_include_directories(main PRIVATE "include/")
-target_include_directories(main PRIVATE "vendor/")
-target_include_directories(main PRIVATE "vendor/SDL2.30/include/")
-target_include_directories(main PRIVATE "vendor/SDL2.30/include/SDL2/")
-
-target_link_libraries(main PRIVATE SDL2main SDL2)
-
-# Fix MinGW / MSYS build for SDL2
-if(WIN32)
-  if(NOT MSVC)
-    target_link_libraries(main PRIVATE mingw32)
-  endif()
-endif()
+target_include_directories(${PROJECT_NAME} PRIVATE "include/")
+target_link_libraries(${PROJECT_NAME} PRIVATE imgui)
