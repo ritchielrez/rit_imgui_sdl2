@@ -4,13 +4,6 @@ set(CXX_STANDARD_REQUIRED ON)
 
 project(rit-imgui-sdl2 VERSION 1.0)
 
-include(cmake/CompilerWarnings.cmake)
-include(cmake/StandardProjectSettings.cmake)
-include(cmake/StaticAnalyzers.cmake)
-
-if(WIN32)
-	include(cmake/SDL2Windows.cmake)
-endif()
 
 add_executable(main src/main.cpp src/rit_imgui_sdl2.cpp include/rit_imgui_sdl2.hpp 
   vendor/imgui.cpp
